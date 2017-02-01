@@ -14,6 +14,10 @@ public class TennisScoring {
     private static Game game = new Game(0, 0);
     private static ScoringService scoringService = new ScoringService(game);
 
+    /**
+     * Main method of the whole project
+     * @param args
+     */
     public static void main(String [] args) {
         Scanner sc = new Scanner(System.in);
         String input = "";
@@ -26,6 +30,10 @@ public class TennisScoring {
         }
     }
 
+    /**
+     * Processes the user input and prints out the result if requested.
+     * @param input the user input String
+     */
     public static void process(String input) {
         if(input.equals("quit")) {
             System.exit(0);
