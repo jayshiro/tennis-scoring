@@ -14,10 +14,6 @@ public class Game {
         this.pointsPlayer2 = pointsPlayer2;
     }
 
-    public void setPointsPlayer1(int pointsPlayer1) {
-        this.pointsPlayer1 = pointsPlayer1;
-    }
-
     public void setPointsPlayer2(int pointsPlayer2) {
         this.pointsPlayer2 = pointsPlayer2;
     }
