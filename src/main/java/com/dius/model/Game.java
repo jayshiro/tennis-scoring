@@ -25,4 +25,12 @@ public class Game {
     public int getPointsPlayer2() {
         return pointsPlayer2;
     }
+
+    public void addPointToPlayer(PlayerEnum player) {
+        if(player == PlayerEnum.PLAYER1) {
+            pointsPlayer1++;
+        } else {
+            pointsPlayer2++;
+        }
+    }
 }
