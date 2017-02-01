@@ -1,6 +1,7 @@
 package com.dius.service;
 
 import com.dius.model.Game;
+import com.dius.model.PlayerEnum;
 
 /**
  * The service class that will do computations on the scores.
@@ -16,13 +17,14 @@ public class ScoringService {
 
     /**
      * Add point to a given player
-     * @param player String indicator of the player who won a point
+     * @param playerEnum enum object of the player who won a point
      */
-    public void pointWonBy(String player) {
+    public void pointWonBy(PlayerEnum playerEnum) {
         if(winnerIsPresent()) {
             return;
         }
 
+        game.addPointToPlayer(playerEnum);
     }
 
     public void printScore() {
