@@ -26,6 +26,10 @@ public class Game {
         return pointsPlayer2;
     }
 
+    /**
+     * Adds a point to the player that won a point
+     * @param player
+     */
     public void addPointToPlayer(PlayerEnum player) {
         if(player == PlayerEnum.PLAYER1) {
             pointsPlayer1++;
