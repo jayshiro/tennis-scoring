@@ -18,21 +18,19 @@ public class ScoringServiceTest {
 
     @Before
     public void setup() {
-        this.game = new Game();
+        this.game = new Game(0,0);
         this.scoringService = new ScoringService(game);
     }
 
     @Test
-    public void shouldReturnTrueIfAPlayerIsMoreThan3Points() {
-        game.setPointsPlayer1(1);
+    public void shouldReturnTrueIfWinnerIsPresent() {
         game.setPointsPlayer2(4);
-        assertTrue(scoringService.onePlayerIsMoreThan3Points());
+        assertTrue(scoringService.winnerIsPresent());
     }
 
     @Test
-    public void shouldReturnFalseIfNoPlayerIsMoreThan3Points() {
-        game.setPointsPlayer1(1);
-        game.setPointsPlayer2(1);
-        assertFalse(scoringService.onePlayerIsMoreThan3Points());
+    public void shouldReturnFalseIfThereIsStillNoWinner() {
+        game.setPointsPlayer2(3);
+        assertFalse(scoringService.winnerIsPresent());
     }
 }
