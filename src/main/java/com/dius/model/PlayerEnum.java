@@ -19,6 +19,11 @@ public enum PlayerEnum {
         return displayName;
     }
 
+    /**
+     * Return a PlayerEnum object given the displayName
+     * @param displayName str value representing the displayName of the enum object
+     * @return
+     */
     public static PlayerEnum getByDisplayName(String displayName) {
         return Arrays.stream(PlayerEnum.values())
                 .filter(p -> p.getDisplayName().equals(displayName))
