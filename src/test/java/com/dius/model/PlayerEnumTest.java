@@ -35,4 +35,15 @@ public class PlayerEnumTest {
     public void shouldThrowExceptionWhenLookingForUnsupportedEnum() {
         PlayerEnum.getByDisplayName("Player 3");
     }
+
+    @Test
+    public void shouldReturnTheCorrectEnumByUsingValueOf() {
+        assertEquals(PlayerEnum.valueOf("PLAYER1"), PlayerEnum.PLAYER1);
+        assertEquals(PlayerEnum.valueOf("PLAYER2"), PlayerEnum.PLAYER2);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldThrowExceptionWhenEnumValueIsNonExistent() {
+        assertEquals(PlayerEnum.valueOf("PLAYER3"), PlayerEnum.PLAYER1);
+    }
 }
