@@ -23,7 +23,7 @@ java -jar target/tennis-scoring-1.0-SNAPSHOT.jar
 ```sh
 Player 1
 Player 1
-//prints out 15-0
+//prints out 30-0
 score
 Player 1
 Player 2
