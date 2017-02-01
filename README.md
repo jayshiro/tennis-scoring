@@ -18,3 +18,29 @@ To run the program, use the following command in the project folder.
 ```sh
 java -jar target/tennis-scoring-1.0-SNAPSHOT.jar
 ```
+
+##### Sample Input and Output
+```sh
+Player 1
+Player 1
+//prints out 15-0
+score
+Player 1
+Player 2
+Player 2
+Player 2
+//prints out Deuce
+score
+Player 1
+//prints out Advantage Player 1
+score
+Player 2
+//prints out Deuce
+score
+Player 2
+//prints out Advantage Player 2
+score
+Player 2
+//prints out Player 2 wins
+score
+```
