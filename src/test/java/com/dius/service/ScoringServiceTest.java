@@ -62,4 +62,80 @@ public class ScoringServiceTest {
         assertEquals(game.getPointsPlayer1(), 4);
         assertEquals(game.getPointsPlayer2(), 2);
     }
+
+    @Test
+    public void shouldReturnTheNormalStringScoreRepresentationOfThePlayers() {
+        scoringService.pointWonBy(PlayerEnum.PLAYER1);
+        scoringService.pointWonBy(PlayerEnum.PLAYER1);
+        scoringService.pointWonBy(PlayerEnum.PLAYER2);
+        scoringService.pointWonBy(PlayerEnum.PLAYER1);
+        scoringService.pointWonBy(PlayerEnum.PLAYER2);
+        assertEquals(scoringService.getScore(), "40-30");
+    }
+
+    @Test
+    public void shouldReturnScores0And15Correctly() {
+        scoringService.pointWonBy(PlayerEnum.PLAYER1);
+        assertEquals(scoringService.getScore(), "15-0");
+    }
+
+    @Test
+    public void shouldReturnDeuceWhenPlayersAreTiedAt3PointsOrMore() {
+        scoringService.pointWonBy(PlayerEnum.PLAYER1);
+        scoringService.pointWonBy(PlayerEnum.PLAYER2);
+        scoringService.pointWonBy(PlayerEnum.PLAYER2);
+        scoringService.pointWonBy(PlayerEnum.PLAYER2);
+        scoringService.pointWonBy(PlayerEnum.PLAYER1);
+        scoringService.pointWonBy(PlayerEnum.PLAYER1);
+
+        assertEquals(scoringService.getScore(), "Deuce");
+
+        scoringService.pointWonBy(PlayerEnum.PLAYER1);
+        scoringService.pointWonBy(PlayerEnum.PLAYER2);
+
+        assertEquals(scoringService.getScore(), "Deuce");
+    }
+
+    @Test
+    public void shouldShowAdvantageOfAPlayerCorrectlyWhenLeadingByOneAfterADeuce() {
+        scoringService.pointWonBy(PlayerEnum.PLAYER1);
+        scoringService.pointWonBy(PlayerEnum.PLAYER2);
+        scoringService.pointWonBy(PlayerEnum.PLAYER2);
+        scoringService.pointWonBy(PlayerEnum.PLAYER2);
+        scoringService.pointWonBy(PlayerEnum.PLAYER1);
+        scoringService.pointWonBy(PlayerEnum.PLAYER1);
+        scoringService.pointWonBy(PlayerEnum.PLAYER1);
+
+        assertEquals(scoringService.getScore(), "Advantage " + PlayerEnum.PLAYER1.getDisplayName());
+
+        scoringService.pointWonBy(PlayerEnum.PLAYER2);
+        scoringService.pointWonBy(PlayerEnum.PLAYER2);
+
+        assertEquals(scoringService.getScore(), "Advantage " + PlayerEnum.PLAYER2.getDisplayName());
+    }
+
+    @Test
+    public void shouldShowWinnerOfMatchCorrectly() {
+        scoringService.pointWonBy(PlayerEnum.PLAYER1);
+        scoringService.pointWonBy(PlayerEnum.PLAYER2);
+        scoringService.pointWonBy(PlayerEnum.PLAYER2);
+        scoringService.pointWonBy(PlayerEnum.PLAYER2);
+        scoringService.pointWonBy(PlayerEnum.PLAYER1);
+        scoringService.pointWonBy(PlayerEnum.PLAYER1);
+        scoringService.pointWonBy(PlayerEnum.PLAYER1);
+        scoringService.pointWonBy(PlayerEnum.PLAYER1);
+
+        assertEquals(scoringService.getScore(), PlayerEnum.PLAYER1.getDisplayName() + " wins");
+    }
+
+    @Test
+    public void shouldCorrectlyShowPlayer2Winning() {
+        scoringService.pointWonBy(PlayerEnum.PLAYER1);
+        scoringService.pointWonBy(PlayerEnum.PLAYER2);
+        scoringService.pointWonBy(PlayerEnum.PLAYER2);
+        scoringService.pointWonBy(PlayerEnum.PLAYER2);
+        scoringService.pointWonBy(PlayerEnum.PLAYER2);
+
+        assertEquals(scoringService.getScore(), PlayerEnum.PLAYER2.getDisplayName() + " wins");
+    }
 }
