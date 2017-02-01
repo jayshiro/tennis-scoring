@@ -8,4 +8,20 @@ public class Game {
 
     private int pointsPlayer1;
     private int pointsPlayer2;
+
+    public void setPointsPlayer1(int pointsPlayer1) {
+        this.pointsPlayer1 = pointsPlayer1;
+    }
+
+    public void setPointsPlayer2(int pointsPlayer2) {
+        this.pointsPlayer2 = pointsPlayer2;
+    }
+
+    public int getPointsPlayer1() {
+        return pointsPlayer1;
+    }
+
+    public int getPointsPlayer2() {
+        return pointsPlayer2;
+    }
 }
